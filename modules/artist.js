@@ -1,7 +1,7 @@
 // 'use strict';
 
 // const axios = require('axios');
-// const cache = require('./cache');
+
 
 // // async function getArtist(req, res) {
 // //     const url = process.env.*****;
