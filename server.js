@@ -5,10 +5,9 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-
 // const axios = require('axios');
 
-// const { response } = require('express')
+const { response } = require('express')
 
 // imported modules
 // const getVenue = require('/modules/venue.js');
@@ -20,6 +19,7 @@ const app = express();
 
 // middleware
 app.use(cors());
+app.use(express.json());
 
 // Mongoose connect
 mongoose.connect(process.env.DB_URL);

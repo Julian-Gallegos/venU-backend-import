@@ -1,29 +1,29 @@
 // 'use strict';
 
-// const axios = require('axios');
-// const cache = require('./cache');
+// // const axios = require('axios');
 
-// // async function getVenue(req, res) {
-// //     const url = process.env.*****;
 
-// //     try {
-// //         const key = 'venue-${req.query.searchQuery}';
+// async function getVenue(req, res) {
+//     const url = process.env.*****;
 
-// //     if
+//     try {
+//         const key = 'venue-${req.query.searchQuery}';
 
-// //     } else {
+//     if
+
+//     } else {
 
         
-// //     } catch (error) {
+//     } catch (error) {
 
-// //     }
-// // }
+//     }
+// }
 
-// // class Venue {
-// //     constructor(obj) {
-// //         (this.**** = obj.****),
-// //     }
-// // }
+// class Venue {
+//     constructor(obj) {
+//         (this.**** = obj.****),
+//     }
+// }
 
 // const ParsedData = data => {
 //     return data.results.map(venue => new Venue(venue));
