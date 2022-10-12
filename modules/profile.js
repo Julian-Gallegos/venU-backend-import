@@ -7,10 +7,10 @@ const UsersModel = require('../models/users');
 //     const url = process.env.****;
 
 //     try {
-//         const key = 'profile-${req.query.searchQuery}';
-//         res.status(200).send(results);
+//         const profileFromDb = await Profile.find({ email: req.user.email });
+//         res.status(200).send(profileFromDb);
 //     }   catch (error) {
-//         res.status(500).send(error);
+//         res.status(500).send('server error');
 //     }
 // }
 
@@ -36,14 +36,15 @@ const UsersModel = require('../models/users');
 // }
 
 
-// class Profile {
-//     constructor(obj) {
-//         (this.userName = obj.userName),
-//         (this.password = obj.password),
-//         (this.venues = obj.venues),
-//         (this.artists = obj.artists)
-//     }
-// }
+class Profile {
+    constructor(obj) {
+        (this.userName = obj.userName),
+        (this.password = obj.password),
+        (this.password = obj.email),
+        (this.venues = obj.venues),
+        (this.artists = obj.artists)
+    }
+}
 
 // const ParsedData = data => {
 //     return data.results.map(profile => new Profile(profile));
