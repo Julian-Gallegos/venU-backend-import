@@ -15,7 +15,7 @@ const { response } = require('express')
 // const getUsers = require('./modules/users.js');
 
 // imported Auth module
-// verifyUser = require('./auth/authorize.js');
+const verifyUser = require('./auth/authorize.js');
 
 // server starter
 const app = express();
@@ -25,7 +25,7 @@ app.use(cors());
 app.use(express.json());
 
 // Authorize middleware
-// app.use(verifyUser);
+app.use(verifyUser);
 
 // Mongoose connect
 mongoose.connect(process.env.DB_URL);
