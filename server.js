@@ -10,9 +10,9 @@ const mongoose = require('mongoose');
 const { response } = require('express')
 
 // imported modules
+// const getUsers = require('./modules/users.js');
 // const getVenue = require('/modules/venue.js');
 // const getArtist = require('./modules/artist.js');
-// const getUsers = require('./modules/users.js');
 
 // imported Auth module
 const verifyUser = require('./auth/authorize.js');
