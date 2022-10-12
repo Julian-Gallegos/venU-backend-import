@@ -15,7 +15,6 @@ const usersSchema = new Schema ({
         id: String, required: true,
         name: String, required: true,
     }],
-    // email: { type: String, required: true },
 })
 
 const UsersModel = mongoose.model('Users', usersSchema);
