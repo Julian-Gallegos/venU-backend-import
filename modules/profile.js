@@ -7,6 +7,7 @@ async function getProfile(req, res) {
     try {
         const profileFromDb = await Profile.find({ email: req.user.email });
         res.status(200).send(profileFromDb);
+
     }   catch (error) {
         res.status(500).send('server error');
     }
@@ -14,35 +15,29 @@ async function getProfile(req, res) {
 
 async function addProfile(req, res, next) {
     try {
-        const key ='profile-${req.query.searchQuery}';
-        res.status(201).send(result);
+        const newProfile = await Profile.create({ ...req.body, email: req.user.email })
+        res.status(201).send(newProfile);
+        
     }   catch(error) {
+        res.status(500).send('server error');
         next(error);
     }
 }
 
 async function deleteProfile(req, res, next) {
+    const { email } = req.params;
+
     try {
-        const id = req.params.id;
-        const result = await Profile.findByIdAndDelete(id);
+        await Profile.findByandDelete({...req.body, email: req.user.email})
         res.status(204).send(result);
     }   catch (error) {
         next(error);
     }
 }
 
-async function getVenue(req, res) {
-    try {
-        const profileFromDb = await Profile.find({ email: req.user.email });
-        res.status(200).send(results);
-    }   catch (error) {
-        res.status(500).send(error);
-    }
-}
-
 async function addVenue(req, res, next) {
     try {
-        const key ='venue-${req.query.searchQuery}';
+        const newVenue = await Profile
         res.status(201).send(result);
     }   catch(error) {
         next(error);
@@ -56,15 +51,6 @@ async function deleteVenue(req, res, next) {
         res.status(204).send(result);
     }   catch (error) {
         next(error);
-    }
-}
-
-async function getArtist(req, res) {
-    try {
-        const profileFromDb = await Profile.find({ email: req.user.email });
-        res.status(200).send(results);
-    }   catch (error) {
-        res.status(500).send(error);
     }
 }
 
@@ -87,7 +73,7 @@ async function deleteArtist(req, res, next) {
     }
 }
 
-class Profile {
+class UserProfiles {
     constructor(obj) {
         (this.userName = obj.userName),
         (this.password = obj.password),
@@ -112,7 +98,7 @@ class Artist {
 }
 
 const ParsedData = data => {
-    return data.results.map(profile => new Profile(profile));
+    return data.results.map(profile => new UserProfiles(profile));
 };
 
-module.exports = { getProfile, addProfile, deleteProfile, getVenue, addVenue, deleteVenue, getArtist, addArtist, deleteArtist, };
+module.exports = { getProfile, addProfile, deleteProfile, addVenue, deleteVenue, addArtist, deleteArtist };

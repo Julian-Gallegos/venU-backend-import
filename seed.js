@@ -8,9 +8,33 @@ require('dotenv').config();
 mongoose.connect(process.env.DB_URL);
 
 // Check the name of your module:
-const Artists = require('./models/artists');
-const Users = require('./models/artists');
-const Venues = require('./models/venues');
+
+const Profile = require('./models/users');
+const { addProfile } = require('./modules/profile');
+
+async function seed() {
+
+    await Profile.create({
+        userName: 'Hollistr',
+        password: 'jkda;kla',
+        email: 'chrisbhollis@gmail.com',
+        venues: [{
+            id: 'jdfkja;l',
+            name: 'jhdafj'
+        },
+        {
+            id: 'kldsj;lija',
+            name: ';ljafi;;savm',
+        }
+
+        ],
+        artist: [{
+            id: 'kdj;lakjl',
+            name: 'jkdklal;'
+        }]
+    });
+    mongoose.disconnect();
+}
 
 
 seed();
