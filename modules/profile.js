@@ -6,6 +6,7 @@ const Profile = require('../models/users');
 
 async function getProfile(req, res) {
     try {
+        console.log(req.user.email);
         const profileFromDb = await Profile.find({ email: req.user.email });
         res.status(200).send(profileFromDb);
 
@@ -15,8 +16,9 @@ async function getProfile(req, res) {
 }
 
 async function addProfile(req, res, next) {
+    console.log('req.body is', req.body)
     try {
-        const newProfile = await Profile.create({...body, email: req.user.email })
+        const newProfile = await Profile.create({...req.body, email: request.user.email })
         res.status(201).send(newProfile);
         
     }   catch(error) {
@@ -26,11 +28,11 @@ async function addProfile(req, res, next) {
 }
 
 async function deleteProfile(req, res, next) {
-    const { Profile } = req.params;
+    const id = req.params.id;
 
     try {
-        await Profile.findByandDelete({...req.body, email: req.user.email})
-        res.status(204).send(result);
+        await Profile.findByIdAndDelete(id);
+        res.status(204).send('Delete Successful');
     }   catch (error) {
         next(error);
     }
@@ -38,8 +40,9 @@ async function deleteProfile(req, res, next) {
 
 async function addVenue(req, res, next) {
     try {
-        const newVenue = await Profile.find({...newVenue, email: request.user.email});
-        const addVenue = await 
+        const fetchedProfile = await Profile.find({ email: request.user.email });
+        fetchedProfile.venues.push(req.body.id)
+        fetchedProfile.save();
         res.status(201).send(result);
     }   catch(error) {
         next(error);
@@ -48,8 +51,10 @@ async function addVenue(req, res, next) {
 
 async function deleteVenue(req, res, next) {
     try {
-        const id = req.params.id;
-        const result = await Venue.findByIdAndDelete(id);
+        const fetchedProfile = await Profile.find({ email: request.user.email });
+        const index = fetchedProfile.venues.findIndex(obj => obj.id === req.params.id);
+        fetchedProfile.venues.splice(index, 1);
+        fetchedProfile.save();
         res.status(204).send(result);
     }   catch (error) {
         next(error);
@@ -58,7 +63,9 @@ async function deleteVenue(req, res, next) {
 
 async function addArtist(req, res, next) {
     try {
-        const newArtist = await Profile.find({})
+        const fetchedProfile = await Profile.find({ email: request.user.email });
+        fetchedProfile.artists.push(req.body.id)
+        fetchedProfile.save();
         res.status(201).send(result);
     }   catch(error) {
         next(error);
@@ -67,8 +74,10 @@ async function addArtist(req, res, next) {
 
 async function deleteArtist(req, res, next) {
     try {
-        const id = req.params.id;
-        const result = await Artist.findByIdAndDelete(id);
+        const fetchedProfile = await Profile.find({ email: request.user.email });
+        const index = fetchedProfile.artists.findIndex(obj => obj.id === req.params.id);
+        fetchedProfile.artists.splice(index, 1);
+        fetchedProfile.save();
         res.status(204).send(result);
     }   catch (error) {
         next(error);
@@ -85,19 +94,17 @@ class UserProfiles {
     }
 }
 
-class Venue {
-    constructor(obj) {
-        (this.id = obj.id),
-        (this.name = obj.name)
-    }
-}
+// class Venue {
+//     constructor(obj) {
+//         (this.id = obj.id)
+//     }
+// }
 
-class Artist {
-    constructor(obj) {
-        (this.id = obj.id),
-        (this.name = obj.name)
-    }
-}
+// class Artist {
+//     constructor(obj) {
+//         (this.id = obj.id)
+//     }
+// }
 
 const ParsedData = data => {
     return data.results.map(profile => new UserProfiles(profile));
