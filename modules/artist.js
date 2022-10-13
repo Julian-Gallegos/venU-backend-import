@@ -1,13 +1,11 @@
-'use strict';
+// 'use strict';
 
-// const axios = require('axios');
-const UsersModel = require('../models/users');
+// // const axios = require('axios');
+// const UsersModel = require('../models/users');
 
 // async function getArtist(req, res) {
-//     const url = process.env.*****;
-
 //     try {
-//         const key = 'artist-${req.query.searchQuery}';
+//         const profileFromDb = await Profile.find({ email: req.user.email });
 //         res.status(200).send(results);
 //     }   catch (error) {
 //         res.status(500).send(error);
@@ -15,8 +13,6 @@ const UsersModel = require('../models/users');
 // }
 
 // async function addArtist(req, res, next) {
-//     const url = process.env.****;
-
 //     try {
 //         const key ='artist-${req.query.searchQuery}';
 //         res.status(201).send(result);
@@ -46,4 +42,4 @@ const UsersModel = require('../models/users');
 //     return data.results.map(artist => new Artist(artist));
 // };
 
-module.exports = { getArtist, addArtist, deleteArtist };
+// module.exports = { getArtist, addArtist, deleteArtist };

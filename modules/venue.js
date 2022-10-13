@@ -1,13 +1,11 @@
-'use strict';
+// 'use strict';
 
-// const axios = require('axios');
-const UsersModel = require('../models/users');
+// // const axios = require('axios');
+// const UsersModel = require('../models/users');
 
 // async function getVenue(req, res) {
-//     const url = process.env.*****;
-
 //     try {
-//         const key = 'venue-${req.query.searchQuery}';
+//         const profileFromDb = await Profile.find({ email: req.user.email });
 //         res.status(200).send(results);
 //     }   catch (error) {
 //         res.status(500).send(error);
@@ -15,8 +13,6 @@ const UsersModel = require('../models/users');
 // }
 
 // async function addVenue(req, res, next) {
-//     const url = process.env.****;
-
 //     try {
 //         const key ='venue-${req.query.searchQuery}';
 //         res.status(201).send(result);
@@ -46,4 +42,4 @@ const UsersModel = require('../models/users');
 //     return data.results.map(venue => new Venue(venue));
 // };
 
-module.exports = { getVenue, addVenue, deleteVenue };
+// module.exports = { getVenue, addVenue, deleteVenue };

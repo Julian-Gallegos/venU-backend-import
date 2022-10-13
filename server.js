@@ -10,12 +10,12 @@ const mongoose = require('mongoose');
 const { response } = require('express')
 
 // imported modules
+const { getProfile, addProfile, deleteProfile, addVenue, deleteVenue, addArtist, deleteArtist } = require('./modules/profile.js');
 // const getVenue = require('/modules/venue.js');
 // const getArtist = require('./modules/artist.js');
-// const getUsers = require('./modules/users.js');
 
 // imported Auth module
-// verifyUser = require('./auth/authorize.js');
+const verifyUser = require('./auth/authorize.js');
 
 // server starter
 const app = express();
@@ -25,7 +25,7 @@ app.use(cors());
 app.use(express.json());
 
 // Authorize middleware
-// app.use(verifyUser);
+app.use(verifyUser);
 
 // Mongoose connect
 mongoose.connect(process.env.DB_URL);
@@ -44,15 +44,15 @@ app.listen(PORT, () => console.log('Listening on Port ${PORT}'));
 // endpoints
 // app.get('./venue', getVenue);
 // app.get('./artist', getArtist);
-// app.get('./profile', getProfile);
+app.get('/profile', getProfile);
 
-// app.post('./venue', addVenue);
-// app.post('./artist', addArtist);
-// app.post('./profile', addProfile);
+app.post('/venue', addVenue);
+app.post('/artist', addArtist);
+app.post('/profile', addProfile);
 
-// app.delete('./venue/:id', deleteVenue);
-// app.delete('./artist/:id', deleteArtist);
-// app.delete('./profile/:id', deleteProfile);
+app.delete('/venue/:id', deleteVenue);
+app.delete('/artist/:id', deleteArtist);
+app.delete('/profile/:id', deleteProfile);
 
 app.get('/', (req, res) => {
     res.send('Hello from VenU home route!');
