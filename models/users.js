@@ -8,15 +8,15 @@ const usersSchema = new Schema ({
     password: { type: String, required: true},
     email: { type: String, required: true },
     venues: [{
-        id: String, required: true,
-        name: String, required: true,
+        id: { type: String, required: true },
+        name: { type: String, required: true },
     }],
     artists: [{
-        id: String, required: true,
-        name: String, required: true,
+        id: { type: String, required: true},
+        name: { type: String, required: true},
     }],
 })
 
 const Profile = mongoose.model('Users', usersSchema);
 
-module.exports = UsersMo;
+module.exports = Profile;

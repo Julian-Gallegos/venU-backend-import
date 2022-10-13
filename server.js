@@ -10,7 +10,7 @@ const mongoose = require('mongoose');
 const { response } = require('express')
 
 // imported modules
-// const getUsers = require('./modules/users.js');
+const { getProfile, addProfile, deleteProfile, addVenue, deleteVenue, addArtist, deleteArtist } = require('./modules/profile.js');
 // const getVenue = require('/modules/venue.js');
 // const getArtist = require('./modules/artist.js');
 
@@ -44,15 +44,15 @@ app.listen(PORT, () => console.log('Listening on Port ${PORT}'));
 // endpoints
 // app.get('./venue', getVenue);
 // app.get('./artist', getArtist);
-// app.get('./profile', getProfile);
+app.get('/profile', getProfile);
 
-// app.post('./venue', addVenue);
-// app.post('./artist', addArtist);
-// app.post('./profile', addProfile);
+app.post('/venue', addVenue);
+app.post('/artist', addArtist);
+app.post('/profile', addProfile);
 
-// app.delete('./venue/:id', deleteVenue);
-// app.delete('./artist/:id', deleteArtist);
-// app.delete('./profile/:id', deleteProfile);
+app.delete('/venue/:id', deleteVenue);
+app.delete('/artist/:id', deleteArtist);
+app.delete('/profile/:id', deleteProfile);
 
 app.get('/', (req, res) => {
     res.send('Hello from VenU home route!');
