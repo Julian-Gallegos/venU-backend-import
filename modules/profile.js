@@ -1,5 +1,6 @@
 'use strict';
 
+const { request } = require('express');
 // const axios = require('axios');
 const Profile = require('../models/users');
 
@@ -15,7 +16,7 @@ async function getProfile(req, res) {
 
 async function addProfile(req, res, next) {
     try {
-        const newProfile = await Profile.create({ ...req.body, email: req.user.email })
+        const newProfile = await Profile.create({...body, email: req.user.email })
         res.status(201).send(newProfile);
         
     }   catch(error) {
@@ -25,7 +26,7 @@ async function addProfile(req, res, next) {
 }
 
 async function deleteProfile(req, res, next) {
-    const { email } = req.params;
+    const { Profile } = req.params;
 
     try {
         await Profile.findByandDelete({...req.body, email: req.user.email})
@@ -37,7 +38,8 @@ async function deleteProfile(req, res, next) {
 
 async function addVenue(req, res, next) {
     try {
-        const newVenue = await Profile
+        const newVenue = await Profile.find({...newVenue, email: request.user.email});
+        const addVenue = await 
         res.status(201).send(result);
     }   catch(error) {
         next(error);
@@ -56,7 +58,7 @@ async function deleteVenue(req, res, next) {
 
 async function addArtist(req, res, next) {
     try {
-        const key ='artist-${req.query.searchQuery}';
+        const newArtist = await Profile.find({})
         res.status(201).send(result);
     }   catch(error) {
         next(error);
