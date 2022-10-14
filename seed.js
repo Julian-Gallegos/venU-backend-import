@@ -15,8 +15,6 @@ const { addProfile } = require('./modules/profile');
 async function seed() {
 
     await Profile.create({
-        userName: 'Hollistr',
-        password: 'jkda;kla',
         email: 'chrisbhollis@gmail.com',
         venues: [{
             id: 'jdfkja;l',
