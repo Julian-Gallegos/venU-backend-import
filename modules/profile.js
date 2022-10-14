@@ -67,7 +67,7 @@ async function deleteVenue(req, res, next) {
 async function addArtist(req, res, next) {
     try {
         const fetchedProfile = await Profile.findOne({ email: req.user.email });
-        fetchedProfile.artists.push(req.params.id)
+        fetchedProfile.artists.push({id: req.params.id})
         fetchedProfile.save();
         res.status(201).send("Successfully saved artist");
     }   catch(error) {
