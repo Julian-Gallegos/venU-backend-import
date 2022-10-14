@@ -46,8 +46,8 @@ app.listen(PORT, () => console.log('Listening on Port ${PORT}'));
 // app.get('./artist', getArtist);
 app.get('/profile', getProfile);
 
-app.post('/venue', addVenue);
-app.post('/artist', addArtist);
+app.post('/venue/:id', addVenue);
+app.post('/artist/:id', addArtist);
 app.post('/profile', addProfile);
 
 app.delete('/venue/:id', deleteVenue);
